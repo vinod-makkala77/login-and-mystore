@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function f1(){
+        let v=Number(document.getElementById("name").value);
+        let msg = document.getElementById("msg");
+        if (v>=90){
+                msg.innerHTML= "good one BACHA"
+            }
+            else if(v==69){
+                msg.innerHTML= "yes zaadyyyyy"
+            }
+            else if(v<90 && v>60){
+                msg.innerHTML= "nt bacha"
+            }
+            else{
+                msg.innerHTML="muhahahaha paisa barbaad"
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="number" id="name">
+    <button onclick="f1()">SUBMIT</button>
+    <hr>
+    <div id="msg"></div>
+</body>
+</html>
