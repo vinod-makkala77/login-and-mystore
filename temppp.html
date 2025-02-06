@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function f1(){
+            let a=Number(document.getElementById("n1").value)
+            let b=Number(document.getElementById("n2").value)
+            // let sum=x+y;
+            // let mult=x-y;
+            // let divide=x/y;
+            // let sub=x*y;
+             let msg = document.getElementById("msg");
+            // msg.innerHTML = 
+            //     x+"+"+y+"= " + sum + "<br>" +
+            //     "Multiplication: " + sub + "<br>" +
+            //     "Subtraction: " + mult + "<br>" +
+            //     "Division: " + divide;
+            let msgg=`${a}+${b}=${a+b}<br>`;
+            msgg=msgg+`${a}-${b}=${a-b}<br>`;
+            msgg=msgg+`${a}*${b}=${a*b}<br>`;
+            msgg=msgg+`${a}/${b}=${a/b}<br>`;
+            msg.innerHTML=msgg
+        }
+    </script>
+    <style>
+        .container{
+            display:flex;
+            justify-content:center;
+            flex-direction:column;
+            align-items:center;
+        }
+        .box{
+            border: 2px solid pink;
+            padding: 20px;
+            width:400px;
+            border-radius: 20px;
+        }
+        input{
+            padding:20px;
+            width:90%;
+        }
+        button{
+            background-color:pink;
+            width:100%;
+            padding:20px;
+            border-radius:10px;
+            color:white;
+            font-size:xx-larger
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+        <h3 align="center"><i>CALC</i></h3>
+        <p><input type="number" id="n1"></p><br>
+        <p><input type="number" id="n2"></p><br>
+        <button onclick="f1()">submit</button><br>
+        <div id="msg"></div>
+    </div>
+    </div>
+</body>
+</html>

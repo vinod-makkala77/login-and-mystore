@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function f1(){
+            let a = Number(document.getElementById("n1").value);
+            let msg = document.getElementById("msg");
+
+            if (isNaN(a)) {
+                msg.innerHTML = "Please enter a valid number.";
+                return;
+            }
+
+            let table = "<table border='1' style='width:100%; text-align:center;'><tr><th>Multiplier</th><th>Result</th></tr>";
+
+            for (let i = 1; i <= 10; i++) {
+                table += `<tr><td>${a} x ${i}</td><td>${a * i}</td></tr>`;
+            }
+
+            table += "</table>";
+            msg.innerHTML = table;
+        }
+    </script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .box {
+            border: 2px solid rgb(51, 148, 44);
+            padding: 20px;
+            width: 400px;
+            border-radius: 20px;
+            background-color: rgb(239, 255, 239);
+        }
+        input {
+            padding: 20px;
+            width: 90%;
+        }
+        button {
+            background-color: rgb(69, 149, 29);
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            font-size: xx-large;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid rgb(75, 185, 44);
+        }
+        th {
+            background-color: rgb(182, 255, 186);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1 style="color:blue; text-align:center;"><i>Multiplication Table</i></h1>
+            <p><input type="number" id="n1" placeholder="Enter a number"></p><br>
+            <button onclick="f1()" style="color:rgb(254, 221, 154); text-align:center;">Generate Table</button><br>
+            <!-- <img src="https://thumbs.dreamstime.com/z/cartoon-happy-funny-dinosaur-tyrannosaurus-illustration-children-130807829.jpg style="width: 150px; height: auto;"> -->
+            <img src="https://thumbs.dreamstime.com/z/cartoon-happy-funny-dinosaur-tyrannosaurus-illustration-children-130807829.jpg" style="width: 150px; height: auto;">
+
+            <div id="msg"></div>
+        </div>
+    </div>
+</body>
+</html>

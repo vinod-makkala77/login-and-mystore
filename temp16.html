@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="myscript.js"></script>  
+    <script src="myscript.js"></script> 
     <style>
         .container{
             /* display:flex;
@@ -14,9 +14,10 @@
             text-align:center ;
             display:flex;
             justify-content:center;
+            height: 100vh;
         }
         .box{
-            border: 2px solid silver;
+            border: 2px solid rgb(51, 50, 50);
             padding: 20px;
             width:400px;
             border-radius: 20px;
@@ -26,7 +27,7 @@
             width:90%;
         }
         button{
-            background-color:blue;
+            background-color:black;
             width:100%;
             padding:20px;
             border-radius:10px;
@@ -38,13 +39,11 @@
 <body>
     <div class="container">
         <div class="box">
-            <h3><i>LOGIN PAGE</i></h3>
-    <input type="text" required placeholder="enter babuname" id="email" autofocus><br><br><br>
-    <input type="password" required placeholder="enter password" id="pass" autofocus><br><br><br>
-   <!-- <input type="checkbox" id="chkremember"><label for="chkremember">Remember me</label> -->
+        <h3>FORM</h3>
+    <input type="text" required placeholder="enter email babu" id="email"><br><br>
+    <input type="password" required placeholder="enter pass" id="pass"><br><br>
     <button onclick="f1()">LOGIN</button>
     <p><div id="message"></div></p>
-    </div>
-    </div>
+</div></div>
 </body>
 </html>

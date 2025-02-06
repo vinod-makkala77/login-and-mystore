@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display:flex;
+            justify-content:center;
+            /* flex-direction:column; */
+            align-items:center; 
+            text-align:center ;
+            height: 100vh;
+        }
+        .box{
+            margin:20px;
+            border:4px solid gray;
+            padding:20px;
+            background-color: rgb(225, 250, 200);
+            border-radius: 10px;
+        }
+        .form{
+            background-color: rgb(254, 230, 195);
+            padding:10px;
+            border-radius: 10px;
+            border:4px solid rgb(221, 221, 221);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        let products=[
+            {id:1,name:"product 1",desc:"dont buy pookie",url:"https://picsum.photos/id/1/200/200",price:35},
+            {id:2,name:"product 2",desc:"dont buy pookie",url:"https://picsum.photos/id/2/200/200",price:30},
+            {id:3,name:"product 3",desc:"dont buy pookie",url:"https://picsum.photos/id/3/200/200",price:40},
+            {id:4,name:"product 4",desc:"dont buy pookie",url:"https://picsum.photos/id/4/200/200",price:50},
+        ];
+        //console.log(products[0])
+        let length=products.length
+        let str="<div class='container'>"
+        for(let i=0;i<length;i++){
+            str=str+`<div class="box">
+                <div class="form">
+                <img src='${products[i].url}'>
+                <h2><i>${products[i].name}<i></h2>
+                    <p>${products[i].desc}</p>
+                    <h3>Price: ${products[i].price}
+                    <button>Add to cart</button>
+                    </div>
+                    </div>`
+        }
+        str+='</div>'
+        root.innerHTML=str
+    </script>
+</body>
+</html>
