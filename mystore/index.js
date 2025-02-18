@@ -18,10 +18,12 @@
 //     price: 30,
 //   },
 // ];
+let orders = [];
 let products=[];
-const cart = {};
+let cart = {};
 let users = [];
 let user = {};
+let total=0;
 const addToCart = (id) => {
   if (!cart[id]) cart[id] = 1;
   showCart();
@@ -37,20 +39,36 @@ const decrement = (id) => {
   showCart();
 };
 const showTotal = () => {
-  let total = products.reduce((sum, value) => {
+   total = products.reduce((sum, value) => {
     return sum + value.price * (cart[value.id] ? cart[value.id] : 0);
   }, 0);
 
   divTotal.innerHTML = `Order Value: $${total}`;
 };
-
+  const showOrders = () => {
+    let str = "";
+    orders.map((value) => {
+      if (value.customer === user.email) {
+        str += `
+        <li>
+        ${value.customer}-
+        ${value.ordervalue}-
+        ${Object.keys(items).length}-
+        ${value.status}-
+        </li>
+        `;
+      }
+    });
+    divProducts.innerHTML = str;
+  };
 const showMain = () => {
   let str = `
   <div class="container">
       <div class="header">
         <h1>My Store</h1>
         <div >
-        <h4 onclick="displayCart()">Cart:<span id="items"></span></h4>
+        <div onclick='showOrders()'>Orders</div>
+        <button onclick="displayCart()">Cart:<span id="items"></span></button>
         <button onclick='showLogin()'>Logout</button>
         </div>
         </div>
@@ -71,6 +89,20 @@ const showMain = () => {
   root.innerHTML = str;
   showProducts();
 };
+const placeOrder = ()=>{
+  const ord={
+    customer:user.email,
+    items:cart,
+    ordervalue:total,
+    status:"pending"
+  };
+  orders.push(ord);
+  cart={};
+  showCart();
+  hideCart();
+  showOrders();
+  console.log(orders);
+};
 
 const showCart = () => {
   let str = "";
@@ -82,6 +114,7 @@ const showCart = () => {
       })'>-</button>${cart[value.id]}<button onclick='increment(${
         value.id
       })'>+</button>-$${value.price * cart[value.id]}</li>
+      <button onclick='placeOrder()'> Place Order</button>
         `;
     }
   });
