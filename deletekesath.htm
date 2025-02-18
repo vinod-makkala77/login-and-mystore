@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOKU DRAGON BALL Z ENGINEERING COLLEGE</title>
+    <style>
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .box {
+            background-color: rgb(216, 200, 252);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="message"></div>
+
+    <script>
+        let users = [];
+
+        function loginpage() {
+            let message = document.getElementById("message");
+            let userList = users.map((user, index) => `
+                <div>
+                    ${user.name} - ${user.email}
+                    <button onclick="deleteUser(${index})">Delete</button>
+                </div>
+            `).join("");
+
+            message.innerHTML = `
+            <div class="container">
+                <div class="box">
+                    <h3>WELCOME USER</h3>
+                    ${userList}
+                    <button onclick="showLoginForm()">LOGOUT</button>
+                </div>
+            </div>`;
+        }
+
+        function showRegisterForm() {
+            let message = document.getElementById("message");
+            message.innerHTML = `
+            <div class="container">
+                <div class="box">
+                    <h3>GOKU DRAGON BALL Z ENGINEERING COLLEGE</h3>
+                    <input type="text" required placeholder="wassur name hoy" id="name"><br><br>
+                    <input type="text" required placeholder="email ray ra" id="email"><br><br>
+                    <input type="password" required placeholder="piss sorry password" id="pass"><br><br>
+                    <input type="date" required placeholder="when was u born" id="date"><br><br>
+                    <button onclick="datastorage()">Submit</button>
+                    <button onclick="showLoginForm()">Back to Login</button>
+                </div>
+            </div>`;
+        }
+
+        function showLoginForm() {
+            let message = document.getElementById("message");
+            message.innerHTML = `
+            <div class="container">
+                <div class="box">
+                    <h3><i>LOGIN PAGE</i></h3>
+                    <input type="text" required placeholder="enter babuname" id="email" autofocus><br><br><br>
+                    <input type="password" required placeholder="enter password" id="pass" autofocus><br><br><br>
+                    <button onclick="checkLogin()">LOGIN</button>
+                    <button onclick="showRegisterForm()">Register</button>
+                </div>
+            </div>`;
+        }
+
+        function datastorage() {
+            let n = document.getElementById("name").value;
+            let e = document.getElementById("email").value;
+            let p = document.getElementById("pass").value;
+            let d = document.getElementById("date").value;
+
+            let user = {
+                name: n,
+                email: e,
+                password: p,
+                dob: d
+            };
+
+            users.push(user);
+            alert("User registered successfully!");
+            showLoginForm();
+        }
+
+        function checkLogin() {
+            let loginEmail = document.getElementById("email").value;
+            let loginPassword = document.getElementById("pass").value;
+
+            let foundUser = users.find(user => user.email === loginEmail && user.password === loginPassword);
+
+            if (foundUser) {
+                loginpage();
+            } else {
+                alert("Invalid credentials!");
+            }
+        }
+
+        function deleteUser(index) {
+            users.splice(index, 1);
+            alert("User deleted successfully!");
+            loginpage();
+        }
+
+        showLoginForm();
+    </script>
+</body>
+</html>
